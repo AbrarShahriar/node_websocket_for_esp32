@@ -8,7 +8,24 @@ const PORT = 4001;
 const app = express();
 app.use(cors());
 const httpServer = http.createServer(app);
-const io = new Server(httpServer, { cors: { origin: "*" } });
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE"],
+    allowedHeaders: [
+      "Access-Control-Allow-Headers",
+      "X-Requested-With",
+      "X-Access-Token",
+      "Content-Type",
+      "Host",
+      "Accept",
+      "Connection",
+      "Cache-Control",
+    ],
+    credentials: true,
+    optionsSuccessStatus: 200,
+  },
+});
 
 let ledState = false;
 const EVENTS = {
