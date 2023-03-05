@@ -14,10 +14,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/toggle", (req, res) => {
-  console.log(req.body);
-  ledState = req.body.ledState;
+  ledState = !ledState;
 
-  res.status(200).json({ ledState: req.body.ledState });
+  res.status(200).json({ ledState });
 });
 
 app.listen(PORT, () => {
