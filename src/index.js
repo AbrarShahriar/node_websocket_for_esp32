@@ -1,18 +1,15 @@
-import express from "express";
-import http from "http";
-import { Server } from "socket.io";
-import cors from "cors";
+// @ts-nocheck
+const express = require("express");
+const http = require("http");
+const socket = require("socket.io");
+// import cors from "cors";
 
-const PORT = 4001;
+const PORT = process.env.PORT || 4001;
 
 const app = express();
 // app.use(cors());
 const httpServer = http.createServer(app);
-const io = new Server(httpServer, {
-  cors: {
-    origin: "https://master--dainty-mooncake-d761cb.netlify.app",
-  },
-});
+const io = socket(httpServer);
 
 let ledState = false;
 const EVENTS = {
