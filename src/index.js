@@ -10,7 +10,7 @@ const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: "https://master--dainty-mooncake-d761cb.netlify.app",
   },
 });
 
